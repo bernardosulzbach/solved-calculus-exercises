@@ -1,0 +1,14 @@
+language: ruby
+
+addons:
+  apt:
+    packages:
+      - texlive-latex-recommended
+      - texlive-latex-extra
+      - texlive-fonts-recommended
+      - texlive-math-extra
+      - lmodern
+      - rubber
+
+script:
+  - bash rubber.sh
