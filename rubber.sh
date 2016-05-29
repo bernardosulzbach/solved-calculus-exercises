@@ -1,0 +1,1 @@
+rubber --pdf main.tex
