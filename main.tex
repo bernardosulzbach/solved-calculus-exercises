@@ -1,0 +1,338 @@
+\documentclass[a4paper, titlepage]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[backend=bibtex, style=alphabetic]{biblatex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage{csquotes}
+\usepackage{epigraph}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage[lastexercise]{exercise} % The answer will be linked to the last exercise.
+\usepackage{titlesec}
+\usepackage{indentfirst}
+
+\addbibresource{biblio.bib}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{Solved Calculus Exercises}
+\author{Bernardo Sulzbach \\
+       \href{mailto:mafagafogigante@gmail.com}{mafagafogigante@gmail.com}}
+\date{May 2016}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\setlength{\epigraphwidth}{3in}
+\epigraph{There exists no separation between gods and men;
+one blends softly casual into the other.}{Frank Herbert}
+
+\subsection{About this document}
+
+This is a collection of calculus exercises with their solutions.
+Some of these problems were extracted from popular calculus books.
+Where this was the case, the source is mentioned.
+
+Problems whose source is not acknowledged were either conceived by
+the author or are freely published somewhere else.
+
+\subsection{On typographical style}
+
+The main author of this document agrees with \textit{The Imprimerie nationale},
+about always indenting after titles. One might have already noticed this by now.
+
+\section{Differentiation}
+
+\subsection{Optimization problems}
+
+\begin{Exercise}
+A rectangular field is to be bounded by a fence on three sides
+and by a straight stream on the fourth side.
+Find the dimensions of the field with maximum area that can be enclosed
+using 1000 ft of fence.
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\[A = x \left( 1000 - 2x \right)\]
+
+\begin{align*}
+    \frac{d}{dx} A &= 0 \\
+    \frac{d}{dx} A &= \frac{d}{dx} x \left( 1000 - 2x \right) \\
+    &= \frac{d}{dx} -2x^2 + 1000x \\
+    &= -4x + 1000
+    \iff x = 250
+\end{align*}
+
+The best rectangle should have a side parallel to the stream of 500 ft
+and two sides of 250 ft.
+\end{Answer}
+
+\begin{Exercise}
+Find the dimensions of the rectangle with maximum area
+that can be inscribed in a circle of radius 10.
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+Let \(a\) and \(b\) are the sides of the rectangle. Then \(A = ab\) and
+\[r^2 = 100 = \left( \frac{a}{2} \right)^2 + \left( \frac{b}{2} \right)^2\]
+Therefore,
+\[b^2 = 400 - a^2\]
+Therefore,
+\[A = ab = a \sqrt{400 - a^2}\]
+\begin{align*}
+    \od{}{a} A &= \od{}{a} a \sqrt{400 - a^2} \\
+    &= \left( \od{}{a} a \right) \left( \sqrt{400 - a^2} \right)
+      + \left( a \right) \left( \od{}{a} \sqrt{400 - a^2} \right) \\
+    &= \sqrt{400 - a^2} + a \left(\frac{-a}{\sqrt{400 - a^2}} \right) \\
+    &= \sqrt{400 - a^2} + \frac{-a^2}{\sqrt{400 - a^2}} \\
+    &= \frac{400 - a^2 - a^2}{\sqrt{400 - a^2}} \\
+    &= \frac{400 - 2a^2}{\sqrt{400 - a^2}} = 0 \\
+    &\therefore 2a^2 = 400 \rightarrow a = \sqrt{200} \\
+\end{align*}
+
+\[b = \sqrt{400 - a^2} = \sqrt{200}\]
+\end{Answer}
+
+\begin{Exercise}
+A box with a square base is taller than it is wide. In order
+to send the box through the U.S. mail, the height of the box
+and the perimeter of the base can sum to no more than 108
+centimeters. What is the maximum volume for such a box?
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+
+\[V = a^2 b, b > a\]
+\[b + 4a \le \SI{108}{\centi\meter}\]
+
+Therefore,
+\[b \le \SI{108}{\centi\meter} - 4a\]
+
+As using any value of \(b\) such that \(b < \SI{108}{\centi\meter} - 4a\)
+will be suboptimal (because \(b\) is positive and \(V\) is proportional to \(b\)),
+we take \(b = \SI{108}{\centi\meter} - 4a\).
+
+\begin{align*}
+  \od{}{a} a^2 b &= 0 \\
+  \od{}{a} a^2 b &= \od{}{a} a^2 \left( \SI{108}{\centi\meter} - 4a \right) \\
+                 &= -12 a^2 + \left( \SI{216}{\centi\meter} \right) a \\
+                 &\therefore 12 a^2 = \left( \SI{216}{\centi\meter} \right) a \\
+                 &\therefore 12 a = \SI{216}{\centi\meter} \\
+                 &\therefore a = \SI{18}{\centi\meter}
+\end{align*}
+\[V = a^2 b = \left( \SI{18}{\centi\meter} \right)^2 \left( \SI{36}{\centi\meter} \right)
+            = \SI{11664}{\cubic\centi\meter}\]
+\end{Answer}
+
+\begin{Exercise}
+Find the height and radius of the right circular cone with
+least volume that can be circumscribed about a sphere of
+radius \(R\).
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+
+\[V_{cone} = \frac{r^2 h \pi}{3}\]
+
+Let \(r\) be the radius of the base of the cone and \(h\) be its height.
+
+We make use of similarity of triangles to express \(r\) in terms of \(h\).
+
+\begin{align*}
+  \frac{R}{h - R} &= \frac{r}{\sqrt{r^2 + h^2}} \\
+   R \sqrt{r^2 + h^2} &= r\left(h - R\right) \\
+   R^2 \left( r^2 + h^2 \right) &= r^2 \left(h^2 - 2 h R + R^2\right) \\
+   r^2 \left(h^2 - 2 h R\right) &= R^2 h^2 \\
+   r^2 &= \frac{R^2 h}{h - 2 R}
+\end{align*}
+
+\[V_{cone} = \frac{r^2 h \pi}{3} = \frac{R^2 h^2 \pi}{3 h - 6 R} \]
+
+\[\dod{}{h} \frac{R^2 h^2 \pi}{3 h - 6 R} =
+  \frac{\left(2 R^2 h \pi \right) \left(3 h - 6 R \right) - 3 \left( R^2 h^2 \pi \right)}
+       {\left( 3 h - 6 R \right)^2}\]
+
+\[\frac{\left(2 R^2 h \pi \right) \left(3 h - 6 R \right) - 3 \left( R^2 h^2 \pi \right)}
+       {\left( 3 h - 6 R \right)^2} = 0\]
+\[\left(2 R^2 h \pi \right) \left(3 h - 6 R \right) = 3 \left( R^2 h^2 \pi \right)\]
+\[2h - 4R = h\]
+\[h = 4R\]
+\[r = \sqrt{\frac{R^2 h}{h - 2R}} = \sqrt{\frac{4R^3}{4R - 2R}} = \sqrt{2} R\]
+\end{Answer}
+
+\begin{Exercise}
+Find the height and radius of the largest right circular cone that can be inscribed in a sphere of radius \(R\).
+\end{Exercise}
+\begin{Answer}
+
+\[V_{cone} = \frac{r^2 h \pi}{3}\]
+\[\left(h - R \right)^2 + r^2 = R^2\]
+\[h^2 - 2hR + r^2 = 0\]
+\[h \left( 2R - h \right) = r^2\]
+
+\[V_{cone} = \frac{h \left( 2R - h \right) h \pi}{3}\]
+\[V_{cone} = \frac{\left( -h^3 + 2h^2R \right) \pi}{3}\]
+
+\begin{align*}
+    \dod{}{h} V_{cone} &= \dod{}{h} \frac{\left( -h^3 + 2h^2R \right) \pi}{3} \\
+     &= \frac{\left( -3h^2 + 4hR \right) \pi}{3} \\
+\end{align*}
+
+
+\[\frac{\left( -3h^2 + 4hR \right) \pi}{3} = 0\]
+\[-3h^2 + 4hR = 0\]
+\[h = \frac{4R}{3}\]
+\[r = \sqrt{h \left(2R - h\right)}
+    = \sqrt{\frac{4R}{3} \left(\frac{2R}{3}\right)}
+    = 2 \sqrt{\frac{2}{3}} R\]
+\end{Answer}
+
+\begin{Exercise}
+The lower edge of a painting, 10 ft in height, is 2 ft above
+an observer’s eye level. Assuming that the best view is obtained
+when the angle subtended at the observer's eye by the painting
+is maximum, how far from the wall should the observer stand?
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+
+Let \(\theta\) be the angle subtended at the observer's eye
+and \(x\) be the distance between the observer and the wall.
+
+\[\theta = \arctan \left( \frac{10 + 2}{x} \right) - \arctan \left( \frac{2}{x} \right)\]
+
+We first find the derivative of \(\theta\) with respect to \(x\).
+
+\begin{align*}
+  \dod{\theta}{x} &= \dod{}{x} \left( \arctan \left( \frac{10 + 2}{x} \right) - \arctan \left( \frac{2}{x} \right) \right) \\
+   &= \dod{}{x} \left( \arctan \left( \frac{10 + 2}{x} \right) \right)
+    - \dod{}{x} \left( \arctan \left( \frac{2}{x} \right) \right) \\
+   &= \frac{-12}{144 + x^2} - \frac{-2}{4 + x^2} \\
+   &= \frac{-12 \left( 4 + x^2 \right) + 2 \left( 144 + x^2 \right)}
+           {\left( 144 + x^2 \right) \left( 4 + x^2 \right)} \\
+\end{align*}
+
+Then we find out when the derivative is zero.
+
+\begin{align*}
+  \frac{-12 \left( 4 + x^2 \right) + 2 \left( 144 + x^2 \right)}
+       {\left( 144 + x^2 \right) \left( 4 + x^2 \right)} &= 0 \\
+  \left( 144 + x^2 \right) - 6 \left( 4 + x^2 \right) &= 0 \\
+  120 - 5 x^2 &= 0 \\
+  x &= \pm \sqrt{24}
+\end{align*}
+
+As \(x\) must be nonnegative, we discard \(- \sqrt{24}\).
+
+Lastly, we must see what is the sign of the derivative before and after the point where it
+equals zero for positive values of \(x\). I chose to test 4 and 5.
+
+\begin{align*}
+  \dod{\theta}{x}\Bigr|_{\substack{\\x = 4}} &= \frac{1}{40} \\
+  \dod{\theta}{x}\Bigr|_{\substack{\\x = 5}} &= - \frac{10}{4901}
+\end{align*}
+
+As there is only one positive value of \(x\) such that \(\dod{\theta}{x}\) is zero
+and it is positive to the left and negative to the right, this point is an absolute maximum
+and the answer is 24 feet.
+    
+\end{Answer}
+
+\section{Integration}
+
+\subsection{The power rule}
+
+\begin{Exercise}
+\[\int \left( x^{-3} - 3x^{1/4} + 8x^2 \right) dx\]
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\begin{align*}
+\int \left( x^{-3} - 3x^{1/4} + 8x^2 \right) dx
+&= \int x^{-3} dx - \int 3x^{1/4} dx + \int 8x^2 dx \\
+&= - \frac{1}{2}x^{-2} - \frac{12}{5}x^{5/4} + \frac{8}{3}x^3 + C
+\end{align*}
+\end{Answer}
+
+\begin{Exercise}
+\[\int \left( \frac{2}{x} + 3e^x \right) dx\]
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\begin{align*}
+\int \left( \frac{2}{x} + 3e^x \right) dx
+&= \int 2x^{-1} dx + \int 3e^x dx \\
+&= 2 \int x^{-1} dx + 3 \int e^x dx \\
+&= 2 \ln \abs{x} + 3 e^x + C
+\end{align*}
+\end{Answer}
+
+\begin{Exercise}
+\[\int \left( 3 \sin x - 2 \sec^2 x \right) dx\]
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\begin{align*}
+\int \left( 3 \sin x - 2 \sec^2 x \right) dx
+&= 3 \int \sin x dx - 2 \int \sec^2 x dx \\
+&= - 3 \cos x - 2 \tan x + C
+\end{align*}
+\end{Answer}
+
+\begin{Exercise}
+    \[\int \left( \sec x \left( \sec x + \tan x \right) \right) dx\]
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\begin{align*}
+    \int \left( \sec x \left( \sec x + \tan x \right) \right) dx \\
+    &= \int \left( \sec^2 x \right) dx + \int \left( \sec x \tan x \right) dx \\
+    &= \tan x + \sec x + C
+\end{align*}
+\end{Answer}
+
+\subsection{Integration by parts}
+
+\begin{Exercise}
+\[\int e^x \cos x \mathop{dx}\]
+\end{Exercise}
+
+\begin{Answer}
+
+We use integration by parts to derive that
+
+\[\int e^x \cos x \mathop{dx}
+  = e^x \sin x - \int e^x \sin x \mathop{dx}\]
+
+Another step of integration by parts shows us that 
+
+    \[\int e^x \sin x \mathop{dx} = - e^x \cos x + \int e^x \cos x \mathop{dx}\]
+
+And therefore that
+
+\begin{align*}
+\int e^x \cos x \mathop{dx} &= e^x \sin x + e^x \cos x - \int e^x \cos x \mathop{dx} \\
+ &= \frac{e^x \left(\sin x + \cos x \right)}{2} + C
+\end{align*}
+\end{Answer}
+
+\printbibliography
+
+\end{document}
