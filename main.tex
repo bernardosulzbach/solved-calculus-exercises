@@ -366,6 +366,9 @@ is out of its scope.
 \subsection{Initial value problems}
 
 \begin{Exercise}
+
+Solve the initial value problem
+
     \begin{align*}
         \dod{y}{x} &= \sqrt[3]{x} \\
         y \left( 1 \right) &= 2
@@ -385,6 +388,9 @@ is out of its scope.
 \end{Answer}
 
 \begin{Exercise}
+
+Solve the initial value problem
+
     \begin{align*}
         \dod{y}{x} &= \frac{x + 1}{\sqrt{x}} \\
         y \left( 1 \right) &= 0
@@ -402,6 +408,44 @@ is out of its scope.
 
     Therefore, the actual solution for this IVP is
     \[y \left( x \right) = \frac{2}{3}x^{3/2} + 2x^{1/2} - \frac{8}{3}\]
+\end{Answer}
+
+\begin{Exercise}
+
+Solve the initial value problem
+
+    \begin{align*}
+        \dod{y}{x} &= 4e^x \\
+        y \left( 0 \right) &= 1
+    \end{align*}
+    \cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+	\[\int \dod{y}{x} dx = \int \left( 4e^x \right) dx = 4e^x + C\]
+
+    \[y \left( 0 \right) = 4 + C = 1 \iff C = -3\]
+
+    \[y \left( x \right) = 4e^x - 3\]
+\end{Answer}
+
+\begin{Exercise}
+
+Solve the initial value problem
+
+    \begin{align*}
+        \dod{y}{t} &= \frac{1}{t} \\
+        y \left( -1 \right) &= 5
+    \end{align*}
+    \cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+	\[\int \dod{y}{t} dt = \int \left( \frac{1}{t} \right) dt = \ln \abs{t} + C\]
+
+    \[y \left( -1 \right) = \ln \abs{-1} + C = \ln \left( 1 \right) + C = C = 5 \iff C = 5\]
+
+    \[y \left( t \right) = \ln \abs{t} + C\]
 \end{Answer}
 
 \subsection{Integration by parts}
