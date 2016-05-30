@@ -10,6 +10,7 @@
 \usepackage{epigraph}
 \usepackage{siunitx}
 \usepackage{hyperref}
+\usepackage{enumitem}
 \usepackage[lastexercise]{exercise} % The answer will be linked to the last exercise.
 \usepackage{titlesec}
 \usepackage{indentfirst}
@@ -56,6 +57,16 @@ repository} and the original author may be reached at
 The main author of this document agrees with the \textit{Imprimerie nationale},
 about always indenting after titles. The reader might have already noticed this
 by now.
+
+\subsection{On mathematical notation}
+
+The main author prefers \(\arcsin\) to \(\sin^{-1}\). The same is valid for the
+other trigonometric inverses. Essentially, if we let \(\sin^{2} x\) mean
+\(\left(\sin x \right)^2\), then \(\sin^{-1} x\) should mean
+\(\left(\sin x\right)^{-1}\).\footnote{This cannot be done as \(\sin^{-1} x\)
+is already used in many respected texts meaning \(\arcsin x\).} Therefore, in
+this document it is \textbf{strongly advised} you avoid the \(\sin^{-1}\)
+notation entirely.
 
 \subsection{Regarding collaboration}
 
@@ -341,7 +352,7 @@ is out of its scope.
     \int \left( \frac{1}{2 \sqrt{1 - x^2}} - \frac{3}{1 + x^2} \right) dx
     &= \frac{1}{2} \int \frac{1}{\sqrt{1 - x^2}} dx
     - 3 \int \frac{1}{1 + x^2} dx \\
-    &= \frac{1}{2} \sin^{-1} x - 3 \tan^{-1} x + C
+    &= \frac{1}{2} \arcsin x - 3 \arctan x + C
 \end{align*}
 \end{Answer}
 
@@ -446,6 +457,64 @@ Solve the initial value problem
     \[y \left( -1 \right) = \ln \abs{-1} + C = \ln \left( 1 \right) + C = C = 5 \iff C = 5\]
 
     \[y \left( t \right) = \ln \abs{t} + C\]
+\end{Answer}
+
+\begin{Exercise}
+
+Find a curve that passes through the point \((-3, 0)\) and whose slope is
+\(2x + 1\) at all points.
+
+    \begin{align*}
+        \dod{y}{x} &= 2x + 1 \\
+        y \left( -3 \right) &= 0
+    \end{align*}
+    \cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+	\[\int \dod{y}{x} dx = \int \left( 2x + 1 \right) dx = x^2 + x + C\]
+
+    \[y \left( -3 \right) = 9 - 3 + C = 6 + C = 0 \iff C = -6\]
+
+    \[y \left( x \right) = x^2 + x - 6\]
+\end{Answer}
+
+\begin{Exercise}
+
+\begin{enumerate}[label=(\alph*)]
+\item Show that \(F \left( x \right) = \arctan x\) and
+      \(G \left( x \right) = -\arctan \left( x^{-1} \right)\) differ by a
+      constant on the interval \((0, +\infty)\) by showing that they are
+      antiderivatives of the same function.
+
+\item Find the constant \(C\) such that
+      \(F \left( x \right) - G \left( x \right) = C\) by evaluating the
+      functions \(F \left( x \right)\) and \(G \left( x \right)\) at a
+      particular value of \(x\).
+
+\end{enumerate}
+\cite{anton-bivens-davis}
+\end{Exercise}
+
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item If these functions are antiderivatives of the same function, we must obtain the same
+      function when we differentiate them.
+      \[\dod{}{x} F \left( x \right)
+      = \dod{}{x} \arctan x
+      = \frac{1}{x^2 + 1}\]
+      \begin{align*}
+      \dod{}{x} G \left( x \right)
+      &= \dod{}{x} - \arctan \left( x^{-1} \right) \\
+      &= \left(x^{-2}\right) \left(\frac{1}{\left(x^{-1}\right)^2 + 1}\right) \\
+      &= \frac{x^{-2}}{x^{-2} + 1} \\
+      &= \left(\frac{x^{-2}}{x^{-2} + 1}\right) \left(\frac{x^2}{x^2}\right) \\
+      &= \frac{1}{x^{2} + 1}
+      \end{align*}
+\item For simplicity, let \(x = 1\). Then we have \(F \left(1\right) = \pi / 4\)
+and \(G \left(1\right) = - \pi / 4\). Consequently,
+\(F \left( x \right) - G \left( x \right) = \pi / 2\).
+\end{enumerate}
 \end{Answer}
 
 \subsection{Integration by parts}
